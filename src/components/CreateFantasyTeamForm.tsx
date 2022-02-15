@@ -1,38 +1,40 @@
-import { useState } from 'react'
+import { useState, ChangeEvent } from 'react'
 
 interface CreateTeamData {
-    teamName: string
+    name: string
 }
 
 interface Props {
     onSubmit: (formValues: CreateTeamData) => void
 }
 
-export const CreateFantasyTeamForm = ({onSubmit}: Props) => {
-    const [createTeamData, setcreateTeamData] = useState({
-        teamName: ''
+export const CreateFantasyTeamForm = ({ onSubmit }: Props) => {
+    const [ formData, setFormData ] = useState<CreateTeamData>({
+        name: ''
     })
-    const { teamName } = createTeamData
-    const handleChange = ({target}: any) => {
-        const { teamName, value } = target
-        setcreateTeamData({ [teamName]: value } as any)
+    const { name } = formData
+    const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+        const { value } = target
+        setFormData({name: value})
     }
 
     return (
         <form
             onSubmit={async e => {
                 e.preventDefault()
-                onSubmit(createTeamData)
+                onSubmit(formData)
             }}
         >
-            Create Fantasy Team
-            <input
-                name="teamName"
-                placeholder="Team Name" 
-                value={teamName}
-                onChange={handleChange}
-            />
-            <button type="submit">save</button>
+            <div>Create Fantasy Team</div>
+            <div>
+                <input
+                    name="name"
+                    placeholder="Team Name" 
+                    value={name}
+                    onChange={handleChange}
+                />
+                <button type="submit">Create!</button>
+            </div>
         </form>
     )
 }
