@@ -1,25 +1,28 @@
 import { useState } from 'react'
 
-interface State {
+interface CreateTeamData {
     teamName: string
 }
 
 interface Props {
-    onSubmit: (formValues: State) => void
+    onSubmit: (formValues: CreateTeamData) => void
 }
 
 export const CreateFantasyTeamForm = ({onSubmit}: Props) => {
-    const [teamName, setteamName] = useState('')
+    const [createTeamData, setcreateTeamData] = useState({
+        teamName: ''
+    })
+    const { teamName } = createTeamData
     const handleChange = ({target}: any) => {
         const { teamName, value } = target
-        setteamName({ [teamName]: value } as any)
+        setcreateTeamData({ [teamName]: value } as any)
     }
 
     return (
         <form
             onSubmit={async e => {
                 e.preventDefault()
-                onSubmit({teamName})
+                onSubmit(createTeamData)
             }}
         >
             Create Fantasy Team
