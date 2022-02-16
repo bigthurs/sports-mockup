@@ -1,37 +1,48 @@
 import { useEffect, useState } from "react";
-import { API, graphqlOperation } from "aws-amplify";
+import { API } from "aws-amplify";
 
 import { listFantasyTeams } from "../graphql/queries";
-import { FantasyTeamList } from "../components/FantasyTeamList";
-import { CreateFantasyTeamForm } from "../components/CreateFantasyTeamForm";
+import { FantasyTeamList } from "../components/FantasyTeams/FantasyTeamList";
+import { CreateFantasyTeamForm } from "../components/FantasyTeams/CreateFantasyTeamForm";
+
+const currentUser = {
+    id: 'test'
+}
 
 export const ManageTeams = () => {
-  const [fantasyTeams, setFantasyTeams] = useState([]);
+  const [usersTeams, setUsersTeams] = useState([]);
 
   useEffect(() => {
-    fetchFantasyTeams();
+    fetchUsersTeams();
   }, []);
 
-  const fetchFantasyTeams = async () => {
+  const fetchUsersTeams = async () => {
+      const filter = {
+        userTeamsId: {
+            eq: currentUser.id
+        }
+      }
     try {
       const {
         data: {
-          listFantasyTeams: { items: fantasyTeams },
+          listFantasyTeams: { items: usersTeams },
         },
-      } = (await API.graphql(graphqlOperation(listFantasyTeams))) as any; //Get rid of this but it doesnt like the type below
-      console.log({fantasyTeams})
-      setFantasyTeams(fantasyTeams);
+      } = (await API.graphql({ query: listFantasyTeams, variables: { filter: filter}})) as any; //Get rid of this but it doesnt like the type below
+      setUsersTeams(usersTeams);
     } catch (error) {
       console.log("error fetching fantasy teams: ", error);
     }
   };
   return (
-    <div style={{ textAlign: "center" }}>
-      <CreateFantasyTeamForm
-        setFantasyTeams={setFantasyTeams}
-        fantasyTeams={fantasyTeams}
-      />
-      {!fantasyTeams ? null : <FantasyTeamList fantasyTeams={fantasyTeams} />}
-    </div>
+      <>
+        <div style={{ textAlign: "center" }}>
+            <CreateFantasyTeamForm
+                setUsersTeams={setUsersTeams}
+                usersTeams={usersTeams}
+            />
+            {!usersTeams ? null : <FantasyTeamList fantasyTeams={usersTeams} />}
+        </div>
+
+      </>
   );
 };

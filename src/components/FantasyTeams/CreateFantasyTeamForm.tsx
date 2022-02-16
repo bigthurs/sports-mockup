@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { API, graphqlOperation } from 'aws-amplify'
 
-import { FantasyTeam } from '../types'
-import { createFantasyTeam } from '../graphql/mutations'
+import { FantasyTeam } from '../../types'
+import { createFantasyTeam } from '../../graphql/mutations'
 
 interface Props {
-    setFantasyTeams: React.Dispatch<any>,
-    fantasyTeams: FantasyTeam[]
+    setUsersTeams: React.Dispatch<any>,
+    usersTeams: FantasyTeam[]
 }
 
 interface CreateTeamResponse {
@@ -23,7 +23,7 @@ const initialState = {
     name: ''
 }
 
-export const CreateFantasyTeamForm = ( { setFantasyTeams, fantasyTeams } : Props) => {
+export const CreateFantasyTeamForm = ( { setUsersTeams, usersTeams } : Props) => {
     const [ formData, setFormData ] = useState<CreateTeamData>(initialState)
     const { name } = formData
 
@@ -43,7 +43,7 @@ export const CreateFantasyTeamForm = ( { setFantasyTeams, fantasyTeams } : Props
             const { data: { createFantasyTeam: graphQlTeam } } = await API.graphql(graphqlOperation(createFantasyTeam, {
                 input: fantasyTeam
             })) as CreateTeamResponse
-            setFantasyTeams([...fantasyTeams, graphQlTeam])
+            setUsersTeams([...usersTeams, graphQlTeam])
         } catch (error) { console.log('error creating fantasy team: ', error)}
     }
 

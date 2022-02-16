@@ -1,18 +1,16 @@
-import { FantasyTeam } from '../types'
+import { FantasyTeam } from '../../types'
+import { FantasyTeamListItem } from './FantasyTeamListItem'
 
 interface Props {
     fantasyTeams: FantasyTeam[]
 }
 
 export const FantasyTeamList = ({ fantasyTeams } : Props) => {
-    //hardcode in user for now
-    const currentUser = { userTeamsId: 'test' }
-
     return (
         <div>
             {
                 fantasyTeams.map((fantasyTeam: FantasyTeam) => (
-                        <div key={fantasyTeam.id}>{fantasyTeam.name}</div>    
+                        <FantasyTeamListItem fantasyTeam={fantasyTeam}/>    
                     ))
             }
         </div>
