@@ -47,6 +47,15 @@ export const getFantasyTeam = /* GraphQL */ `
     getFantasyTeam(id: $id) {
       id
       name
+      user {
+        id
+        name
+        teams {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       players {
         items {
           id

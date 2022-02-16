@@ -67,6 +67,15 @@ export const onCreateFantasyTeam = /* GraphQL */ `
     onCreateFantasyTeam {
       id
       name
+      user {
+        id
+        name
+        teams {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       players {
         items {
           id
@@ -89,6 +98,15 @@ export const onUpdateFantasyTeam = /* GraphQL */ `
     onUpdateFantasyTeam {
       id
       name
+      user {
+        id
+        name
+        teams {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       players {
         items {
           id
@@ -111,6 +129,15 @@ export const onDeleteFantasyTeam = /* GraphQL */ `
     onDeleteFantasyTeam {
       id
       name
+      user {
+        id
+        name
+        teams {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       players {
         items {
           id

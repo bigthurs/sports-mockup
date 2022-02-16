@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import { ManageUserTeams } from './pages/ManageUserTeams'
+import { ManageTeams } from './pages/ManageTeams'
 
 function App() {
   return (
     <div className="App">
      <h1>Now this is sports</h1>
-     <ManageUserTeams />
+     <ManageTeams />
     </div>
   );
 }

@@ -79,6 +79,15 @@ export const createFantasyTeam = /* GraphQL */ `
     createFantasyTeam(input: $input, condition: $condition) {
       id
       name
+      user {
+        id
+        name
+        teams {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       players {
         items {
           id
@@ -104,6 +113,15 @@ export const updateFantasyTeam = /* GraphQL */ `
     updateFantasyTeam(input: $input, condition: $condition) {
       id
       name
+      user {
+        id
+        name
+        teams {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       players {
         items {
           id
@@ -129,6 +147,15 @@ export const deleteFantasyTeam = /* GraphQL */ `
     deleteFantasyTeam(input: $input, condition: $condition) {
       id
       name
+      user {
+        id
+        name
+        teams {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       players {
         items {
           id

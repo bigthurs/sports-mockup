@@ -73,6 +73,7 @@ export type FantasyTeam = {
   __typename: "FantasyTeam",
   id: string,
   name: string,
+  user?: User | null,
   players?: ModelPlayerConnection | null,
   createdAt: string,
   updatedAt: string,
@@ -340,6 +341,17 @@ export type CreateFantasyTeamMutation = {
     __typename: "FantasyTeam",
     id: string,
     name: string,
+    user?:  {
+      __typename: "User",
+      id: string,
+      name: string,
+      teams?:  {
+        __typename: "ModelFantasyTeamConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
     players?:  {
       __typename: "ModelPlayerConnection",
       items:  Array< {
@@ -369,6 +381,17 @@ export type UpdateFantasyTeamMutation = {
     __typename: "FantasyTeam",
     id: string,
     name: string,
+    user?:  {
+      __typename: "User",
+      id: string,
+      name: string,
+      teams?:  {
+        __typename: "ModelFantasyTeamConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
     players?:  {
       __typename: "ModelPlayerConnection",
       items:  Array< {
@@ -398,6 +421,17 @@ export type DeleteFantasyTeamMutation = {
     __typename: "FantasyTeam",
     id: string,
     name: string,
+    user?:  {
+      __typename: "User",
+      id: string,
+      name: string,
+      teams?:  {
+        __typename: "ModelFantasyTeamConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
     players?:  {
       __typename: "ModelPlayerConnection",
       items:  Array< {
@@ -644,6 +678,17 @@ export type GetFantasyTeamQuery = {
     __typename: "FantasyTeam",
     id: string,
     name: string,
+    user?:  {
+      __typename: "User",
+      id: string,
+      name: string,
+      teams?:  {
+        __typename: "ModelFantasyTeamConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
     players?:  {
       __typename: "ModelPlayerConnection",
       items:  Array< {
@@ -676,6 +721,13 @@ export type ListFantasyTeamsQuery = {
       __typename: "FantasyTeam",
       id: string,
       name: string,
+      user?:  {
+        __typename: "User",
+        id: string,
+        name: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
       players?:  {
         __typename: "ModelPlayerConnection",
         nextToken?: string | null,
@@ -866,6 +918,17 @@ export type OnCreateFantasyTeamSubscription = {
     __typename: "FantasyTeam",
     id: string,
     name: string,
+    user?:  {
+      __typename: "User",
+      id: string,
+      name: string,
+      teams?:  {
+        __typename: "ModelFantasyTeamConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
     players?:  {
       __typename: "ModelPlayerConnection",
       items:  Array< {
@@ -890,6 +953,17 @@ export type OnUpdateFantasyTeamSubscription = {
     __typename: "FantasyTeam",
     id: string,
     name: string,
+    user?:  {
+      __typename: "User",
+      id: string,
+      name: string,
+      teams?:  {
+        __typename: "ModelFantasyTeamConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
     players?:  {
       __typename: "ModelPlayerConnection",
       items:  Array< {
@@ -914,6 +988,17 @@ export type OnDeleteFantasyTeamSubscription = {
     __typename: "FantasyTeam",
     id: string,
     name: string,
+    user?:  {
+      __typename: "User",
+      id: string,
+      name: string,
+      teams?:  {
+        __typename: "ModelFantasyTeamConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
     players?:  {
       __typename: "ModelPlayerConnection",
       items:  Array< {

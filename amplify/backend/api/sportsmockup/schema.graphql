@@ -11,6 +11,7 @@ type User @model {
 type FantasyTeam @model {
   id: ID!
   name: String!
+  user: User @belongsTo
   players: [Player] @hasMany
 }
 
